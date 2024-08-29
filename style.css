@@ -22,24 +22,32 @@ body {
 }
 
 .grid {
-  width: 221px;
-  height: 441px;
+  width: 202px; /* 20px per cell * 10 cells + 1px border * 2 sides */
+  height: 400px; /* 20px per cell * 20 cells + 1px border * 2 sides */
   display: flex;
   flex-wrap: wrap;
   background-color: beige;
   border: 1px solid grey;
   border-radius: 5px;
+  overflow: hidden;
+  
 }
 
 .grid div {
   height: 20px;
   width: 20px;
   border: 1px solid white;
+  box-sizing: border-box; /* Ensures padding and border are included in width/height */
   border-radius: 5px;
 }
 
 .tetromino {
-  background-color: blue;
+  background-color: blue; /* Or any color based on the Tetromino type */
+  border: 1px solid white; /* Optional: for better visibility */
+}
+
+.taken {
+  background-color: grey; /* Or maintain the Tetromino color if you want */
 }
 
 
@@ -66,32 +74,39 @@ body {
   flex-direction: column;
   align-items: center;
   margin-top: 40px; /* Optional: Adjusts the vertical position relative to the grid */
-  }
-  
-  #start-button {
-    font-size: 1.17em;
-    font-weight: bold;
-    margin: 10px 0; /* Adds space between buttons */
-    padding: 6px 12px;
-    border: none;
-    background-color: #f0f0f0;
-    cursor: pointer;
-    border-radius: 5px;
-    align-self: flex-start;
-    /* Use margin to align the button with the grid */
-    margin-left: 0;  
-  }
+}
 
-  h1 {
-    color: teal;
-    font-size: 2em;
-    margin-bottom: 20px;
-    text-align: left;
-    align-self: flex-start; /* Aligns the title to the left edge of the main grid */
-    width: 221px; /* Matches the width of the main grid */
-} 
+/* Container for buttons */
+.button-container {
+  display: flex;
+  justify-content: center; /* Center the buttons horizontally */
+  gap: 10px; /* Space between the buttons */
+  margin-top: 10px; /* Optional: Adds space above the buttons */
+  align-self: flex-start; /* Use margin to align the button with the grid */
+  margin-left: 0;
+  margin-bottom: 30px;
+}
 
-  h3 {
+#start-button, #reset-button {
+  font-size: 1.17em;
+  font-weight: bold;
+  padding: 6px 12px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+h1 {
+  color: teal;
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-align: left;
+  align-self: flex-start; /* Aligns the title to the left edge of the main grid */
+  width: 202px; /* Matches the width of the main grid */
+}
+
+h3 {
   color: teal; /* Sets the title color to blue */
   margin-top: 20px;
   margin-bottom: 10px;
